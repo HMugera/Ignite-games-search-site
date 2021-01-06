@@ -1,7 +1,10 @@
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 function App() {
 	return (
-		<div className="App">
-			<h1>Hughes Ignite</h1>
+		<div>
+			<h1>Ignite code</h1>
 		</div>
 	);
 }
