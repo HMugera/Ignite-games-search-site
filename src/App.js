@@ -3,11 +3,15 @@ import GlobalStyles from "./components/style/GlobalStyles";
 //Components and pages
 import Home from "./pages/Home";
 
+import { Route } from "react-router-dom";
+
 function App() {
 	return (
 		<div>
 			<GlobalStyles />
-			<Home />
+			<Route path={["game/:id", "/"]}>
+				<Home />
+			</Route>
 		</div>
 	);
 }

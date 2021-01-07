@@ -9,6 +9,8 @@ import rootReducers from "./reducers";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
+import { BrowserRouter as Router } from "react-router-dom";
+
 //comibine dev tools and thunk in one line
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,7 +22,9 @@ const store = createStore(
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<Router>
+				<App />
+			</Router>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
