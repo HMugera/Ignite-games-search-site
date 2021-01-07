@@ -3,12 +3,21 @@ import React from "react";
 //Styling and animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
-function Game({ gameName, releaseDate, image }) {
+
+//Redux
+import { useDispatch } from "react-redux";
+import { loadDetail } from "../actions/detailAction";
+
+function Game({ gameName, releaseDate, image, id }) {
+	const dispatch = useDispatch();
+	const loadDetailHandler = () => {
+		dispatch(loadDetail(id));
+	};
 	return (
-		<StyledGame>
+		<StyledGame onClick={loadDetailHandler}>
+			<img src={image} alt={gameName} />
 			<h3>{gameName}</h3>
 			<p>{releaseDate}</p>
-			<img src={image} alt={gameName} />
 		</StyledGame>
 	);
 }
