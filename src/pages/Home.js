@@ -7,6 +7,7 @@ import Game from "../components/Game";
 //Styling and animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import GameDetails from "../components/GameDetails";
 
 function Home() {
 	const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function Home() {
 
 	return (
 		<GameList>
+			<GameDetails />
 			<h2>Upcoming Games</h2>
 			<Games>
 				{upcoming.map((game) => (
