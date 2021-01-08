@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 import { useHistory } from "react-router-dom";
 
-import { smallImage } from "../utils";
+import { resizeImage, getPlatform } from "../utils";
 
 function GameDetails({ pathId }) {
 	const history = useHistory();
@@ -35,7 +35,11 @@ function GameDetails({ pathId }) {
 								<h3>Platforms</h3>
 								<Platforms>
 									{game.platforms.map((data) => (
-										<h3 key={data.platform.id}>{data.platform.name}</h3>
+										<img
+											key={data.platform.id}
+											src={getPlatform(data.platform.name)}
+											alt={data.platform.name}
+										/>
 									))}
 								</Platforms>
 							</Info>
@@ -43,7 +47,7 @@ function GameDetails({ pathId }) {
 						<Media>
 							<motion.img
 								layoutId={`image ${pathId}`}
-								src={smallImage(game.background_image, 1280)}
+								src={resizeImage(game.background_image, 1280)}
 								alt="background_image"
 							/>
 						</Media>
@@ -53,7 +57,7 @@ function GameDetails({ pathId }) {
 						<Gallery>
 							{screen.results.map((screen) => (
 								<img
-									src={smallImage(screen.image, 1280)}
+									src={resizeImage(screen.image, 1280)}
 									key={screen.id}
 									alt="screen_image"
 								/>
@@ -74,6 +78,7 @@ const CardShadow = styled(motion.div)`
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 5;
 	&::-webkit-scrollbar {
 		width: 0.7rem;
 	}
@@ -92,6 +97,7 @@ const Detail = styled(motion.div)`
 	background: white;
 	position: absolute;
 	left: 10%;
+	z-index: 10;
 	color: black;
 	img {
 		width: 100%;

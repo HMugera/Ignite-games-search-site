@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { loadDetail } from "../actions/detailAction";
 
-import { smallImage } from "../utils";
+import { resizeImage } from "../utils";
 
 import { Link } from "react-router-dom";
 function Game({ gameName, releaseDate, image, id }) {
@@ -24,7 +24,7 @@ function Game({ gameName, releaseDate, image, id }) {
 			<Link to={`/game/${id}`}>
 				<motion.img
 					layoutId={`image ${stringPathId}`}
-					src={smallImage(image, 640)}
+					src={resizeImage(image, 640)}
 					alt={gameName}
 				/>
 				<motion.h3 layoutId={`title ${stringPathId}`}>{gameName}</motion.h3>
