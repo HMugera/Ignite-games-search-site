@@ -1,6 +1,6 @@
 //Styling and animation
 import { createGlobalStyle } from "styled-components";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -44,6 +44,9 @@ p{
 a{
     text-decoration:none;
     color:#333;
+}
+img{
+    display:block;
 }
 `;
 

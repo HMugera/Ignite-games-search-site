@@ -1,9 +1,9 @@
 const dayjs = require("dayjs");
 
 let now = dayjs();
-const currentDay = now.format("DD");
-const currentMonth = now.format("MM");
-const currentYear = now.format("YYYY");
+// const currentDay = now.format("DD");
+// const currentMonth = now.format("MM");
+// const currentYear = now.format("YYYY");
 const currentDate = now.format("YYYY-MM-DD");
 const nextYear = now.add("1", "year").format("YYYY-MM-DD");
 const lastYear = now.subtract("1", "year").format("YYYY-MM-DD");
