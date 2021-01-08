@@ -5,8 +5,27 @@ import nintendo from "./img/nintendo.svg";
 import apple from "./img/apple.svg";
 import gamepad from "./img/gamepad.svg";
 
+//Star images
+import starEmpty from "./img/star-empty.png";
+import starFull from "./img/star-full.png";
+
+//get Star rating
+
+export const getStarsRating = (gameRating) => {
+	const stars = [];
+	const rating = Math.floor(gameRating);
+	for (let i = 1; i <= 5; i++) {
+		if (i <= rating) {
+			stars.push(<img alt="star" key={i} src={starFull} />);
+		} else {
+			stars.push(<img alt="star" key={i} src={starEmpty} />);
+		}
+	}
+	return stars;
+};
+
 //get platform images
-export const getPlatform = (platform) => {
+export const getPlatformImage = (platform) => {
 	// switch (platform) {
 	// 	case "PlayStation 4":
 	// 		return playstation;
