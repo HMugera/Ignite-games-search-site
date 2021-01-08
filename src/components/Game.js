@@ -12,16 +12,22 @@ import { smallImage } from "../utils";
 
 import { Link } from "react-router-dom";
 function Game({ gameName, releaseDate, image, id }) {
+	const stringPathId = id.toString();
+
 	const dispatch = useDispatch();
 	const loadDetailHandler = () => {
 		document.body.style.overflow = "hidden";
 		dispatch(loadDetail(id));
 	};
 	return (
-		<StyledGame onClick={loadDetailHandler}>
+		<StyledGame layoutId={stringPathId} onClick={loadDetailHandler}>
 			<Link to={`/game/${id}`}>
-				<img src={smallImage(image, 640)} alt={gameName} />
-				<h3>{gameName}</h3>
+				<motion.img
+					layoutId={`image ${stringPathId}`}
+					src={smallImage(image, 640)}
+					alt={gameName}
+				/>
+				<motion.h3 layoutId={`title ${stringPathId}`}>{gameName}</motion.h3>
 				<p>{releaseDate}</p>
 			</Link>
 		</StyledGame>

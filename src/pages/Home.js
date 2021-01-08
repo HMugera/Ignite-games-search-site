@@ -6,7 +6,7 @@ import Game from "../components/Game";
 
 //Styling and animation
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import GameDetails from "../components/GameDetails";
 
 import { useLocation } from "react-router-dom";
@@ -26,43 +26,47 @@ function Home() {
 
 	return (
 		<GameList>
-			{pathId && <GameDetails />}
-			<h2>Upcoming Games</h2>
-			<Games>
-				{upcoming.map((game) => (
-					<Game
-						gameName={game.name}
-						id={game.id}
-						image={game.background_image}
-						releaseDate={game.released}
-						key={game.id}
-					/>
-				))}
-			</Games>
-			<h2>New Games</h2>
-			<Games>
-				{newGames.map((game) => (
-					<Game
-						gameName={game.name}
-						id={game.id}
-						image={game.background_image}
-						releaseDate={game.released}
-						key={game.id}
-					/>
-				))}
-			</Games>
-			<h2>Popular Games</h2>
-			<Games>
-				{popular.map((game) => (
-					<Game
-						gameName={game.name}
-						id={game.id}
-						image={game.background_image}
-						releaseDate={game.released}
-						key={game.id}
-					/>
-				))}
-			</Games>
+			<AnimateSharedLayout type="crossfade">
+				<AnimatePresence>
+					{pathId && <GameDetails pathId={pathId} />}
+				</AnimatePresence>
+				<h2>Upcoming Games</h2>
+				<Games>
+					{upcoming.map((game) => (
+						<Game
+							gameName={game.name}
+							id={game.id}
+							image={game.background_image}
+							releaseDate={game.released}
+							key={game.id}
+						/>
+					))}
+				</Games>
+				<h2>New Games</h2>
+				<Games>
+					{newGames.map((game) => (
+						<Game
+							gameName={game.name}
+							id={game.id}
+							image={game.background_image}
+							releaseDate={game.released}
+							key={game.id}
+						/>
+					))}
+				</Games>
+				<h2>Popular Games</h2>
+				<Games>
+					{popular.map((game) => (
+						<Game
+							gameName={game.name}
+							id={game.id}
+							image={game.background_image}
+							releaseDate={game.released}
+							key={game.id}
+						/>
+					))}
+				</Games>
+			</AnimateSharedLayout>
 		</GameList>
 	);
 }
