@@ -63,6 +63,7 @@ export const getPlatformImage = (platform) => {
 
 //Media resize
 export const resizeImage = (imagePath, size) => {
+	if (!imagePath) return null;
 	const image = imagePath.match(/media\/screenshots/)
 		? imagePath.replace(
 				"media/screenshots",

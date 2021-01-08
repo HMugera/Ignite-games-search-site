@@ -42,6 +42,10 @@ const StyledNav = styled(motion.nav)`
 		outline: none;
 		margin-left: 1rem;
 		border-radius: 10px;
+		transition: transform 0.4s;
+		&:hover {
+			transform: scale(1.1);
+		}
 	}
 `;
 const Logo = styled(motion.div)`
