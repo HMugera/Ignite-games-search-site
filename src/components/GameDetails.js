@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 
 import { useHistory } from "react-router-dom";
 
+import { smallImage } from "../utils";
+
 function GameDetails() {
 	const history = useHistory();
 	//Exit Detail
@@ -39,14 +41,21 @@ function GameDetails() {
 							</Info>
 						</Stats>
 						<Media>
-							<img src={game.background_image} alt="background_image" />
+							<img
+								src={smallImage(game.background_image, 1280)}
+								alt="background_image"
+							/>
 						</Media>
 						<Description>
 							<p>{game.description_raw}</p>
 						</Description>
 						<Gallery>
 							{screen.results.map((screen) => (
-								<img src={screen.image} key={screen.id} alt="screen_image" />
+								<img
+									src={smallImage(screen.image, 1280)}
+									key={screen.id}
+									alt="screen_image"
+								/>
 							))}
 						</Gallery>
 					</Detail>
