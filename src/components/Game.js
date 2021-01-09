@@ -3,14 +3,17 @@ import React from "react";
 //Styling and animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { popup } from "../utils/animation";
 
 //Redux
 import { useDispatch } from "react-redux";
 import { loadDetail } from "../actions/detailAction";
 
-import { resizeImage } from "../utils";
-
+//router
 import { Link } from "react-router-dom";
+
+import { resizeImage } from "../utils/functions";
+
 function Game({ gameName, releaseDate, image, id }) {
 	const stringPathId = id.toString();
 
@@ -20,7 +23,13 @@ function Game({ gameName, releaseDate, image, id }) {
 		dispatch(loadDetail(id));
 	};
 	return (
-		<StyledGame layoutId={stringPathId} onClick={loadDetailHandler}>
+		<StyledGame
+			variants={popup}
+			initial="hidden"
+			animate="show"
+			layoutId={stringPathId}
+			onClick={loadDetailHandler}
+		>
 			<Link to={`/game/${id}`}>
 				<motion.img
 					layoutId={`image ${stringPathId}`}
@@ -41,10 +50,18 @@ const StyledGame = styled(motion.div)`
 	border-radius: 1rem;
 	cursor: pointer;
 	overflow: hidden;
+	margin: 0px auto;
 	img {
 		width: 100%;
 		height: 40vh;
 		object-fit: cover;
+	}
+	@media (min-width: 670px) {
+		width: 100%;
+	}
+	@media (max-width: 380px) {
+		width: 100%;
+		margin: 0rem auto;
 	}
 `;
 

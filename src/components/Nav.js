@@ -2,6 +2,9 @@ import React, { useState } from "react";
 //styling and animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { fadeIn } from "../utils/animation";
+
+//logo
 import firelogo from "../img/firelogo.jpg";
 
 //Redux and Route
@@ -17,21 +20,29 @@ function Nav() {
 		setSearchedGame(e.target.value);
 	};
 	const submitSearch = (e) => {
+		if (searchedGame === "") {
+			return;
+		}
 		e.preventDefault();
 		dispatch(fetchSearch(searchedGame));
-		setSearchedGame("");
 	};
 	const clearSearch = () => {
 		dispatch({ type: "CLEAR_SEARCHED" });
+		setSearchedGame("");
 	};
 	return (
-		<StyledNav>
+		<StyledNav variants={fadeIn} initial="hidden" animate="show">
 			<Logo onClick={clearSearch}>
 				<img src={firelogo} alt="logo" />
 				<h1>Ignite</h1>
 			</Logo>
 			<form className="search">
-				<input value={searchedGame} onChange={inputHandler} type="text" />
+				<input
+					required
+					value={searchedGame}
+					onChange={inputHandler}
+					type="text"
+				/>
 				<button onClick={submitSearch} type="submit">
 					Search
 				</button>
@@ -51,6 +62,7 @@ const StyledNav = styled(motion.nav)`
 		margin-top: 1rem;
 		outline: none;
 		border: 2px solid #000;
+
 		box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 	}
 	button {
@@ -64,8 +76,19 @@ const StyledNav = styled(motion.nav)`
 		margin-left: 1rem;
 		border-radius: 10px;
 		transition: transform 0.4s;
+
 		&:hover {
 			transform: scale(1.1);
+		}
+	}
+	@media (max-width: 670px) {
+		padding: 0.5rem 0.5rem;
+		input {
+			width: 50%;
+			font-size: 1rem;
+		}
+		button {
+			font-size: 1rem;
 		}
 	}
 `;
@@ -78,6 +101,9 @@ const Logo = styled(motion.div)`
 		width: 3rem;
 		height: 2.5rem;
 		object-fit: cover;
+	}
+	@media (max-width: 670px) {
+		padding: 0.5rem;
 	}
 `;
 export default Nav;

@@ -7,7 +7,11 @@ import { motion } from "framer-motion";
 
 import { useHistory } from "react-router-dom";
 
-import { resizeImage, getPlatformImage, getStarsRating } from "../utils";
+import {
+	resizeImage,
+	getPlatformImage,
+	getStarsRating,
+} from "../utils/functions";
 
 function GameDetails({ pathId }) {
 	const history = useHistory();
@@ -90,6 +94,10 @@ const CardShadow = styled(motion.div)`
 	&::-webkit-scrollbar-track {
 		background-color: #424949;
 	}
+	@media (max-width: 670px) {
+		width: 80%;
+		padding: 1rem 1rem;
+	}
 `;
 
 const Detail = styled(motion.div)`
@@ -104,6 +112,9 @@ const Detail = styled(motion.div)`
 	img {
 		width: 100%;
 	}
+	@media (max-width: 670px) {
+		padding: 1rem 0.5rem;
+	}
 `;
 
 const Stats = styled(motion.div)`
@@ -116,15 +127,46 @@ const Stats = styled(motion.div)`
 		height: 2rem;
 		display: inline;
 	}
+	@media (max-width: 670px) {
+		display: flex;
+		justify-content: flex-start;
+		h3 {
+			display: inline;
+		}
+		img {
+			width: 1rem;
+			height: 1rem;
+		}
+		.rating {
+			max-width: 10rem;
+		}
+	}
 `;
 const Info = styled(motion.div)`
 	text-align: center;
+	h3 {
+		padding: 1.5rem;
+	}
+	@media (max-width: 670px) {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		h3 {
+			padding: 0.5rem;
+		}
+	}
 `;
 const Platforms = styled(motion.div)`
 	display: flex;
 	justify-content: space-evenly;
 	img {
 		margin-left: 3rem;
+	}
+	@media (max-width: 670px) {
+		img {
+			margin-left: 0.5rem;
+			margin-right: 0;
+		}
 	}
 `;
 const Media = styled(motion.div)`
@@ -134,9 +176,16 @@ const Media = styled(motion.div)`
 		/* height: 80vh; */
 		object-fit: cover;
 	}
+
+	@media (max-width: 670px) {
+		margin-top: 1rem;
+	}
 `;
 const Description = styled(motion.div)`
 	margin: 5rem 0rem;
+	@media (max-width: 670px) {
+		margin: 1rem 0;
+	}
 `;
 const Gallery = styled(motion.div)`
 	text-align: center;

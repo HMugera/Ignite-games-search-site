@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+//Components
 import { loadGames } from "../actions/gamesAction";
+import GameDetails from "../components/GameDetails";
 import Game from "../components/Game";
 
 //Styling and animation
 import styled from "styled-components";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
-import GameDetails from "../components/GameDetails";
+import { fadeIn } from "../utils/animation";
 
+//Router
 import { useLocation } from "react-router-dom";
 
 function Home() {
@@ -27,7 +30,7 @@ function Home() {
 	);
 
 	return (
-		<GameList>
+		<GameList variants={fadeIn} initial="hidden" animate="show">
 			<AnimateSharedLayout type="crossfade">
 				<AnimatePresence>
 					{pathId && <GameDetails pathId={pathId} />}
@@ -93,6 +96,14 @@ const GameList = styled(motion.div)`
 	padding: 0rem 5rem;
 	h2 {
 		padding: 5rem 0rem;
+	}
+	@media (max-width: 470px) {
+		padding: 0;
+		h2 {
+			padding: 1.5rem;
+			justify-content: center;
+			text-align: center;
+		}
 	}
 `;
 const Games = styled(motion.div)`
