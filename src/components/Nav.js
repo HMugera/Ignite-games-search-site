@@ -59,10 +59,10 @@ const StyledNav = styled(motion.nav)`
 		font-size: 1.5rem;
 		padding: 0.5rem;
 		border-radius: 10px;
+
 		margin-top: 1rem;
 		outline: none;
 		border: 2px solid #000;
-
 		box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 	}
 	button {
@@ -81,10 +81,13 @@ const StyledNav = styled(motion.nav)`
 			transform: scale(1.1);
 		}
 	}
-	@media (max-width: 670px) {
+	@media (max-width: 900px) {
 		padding: 0.5rem 0.5rem;
+		width: 100vw;
+
 		input {
-			width: 50%;
+			width: 80%;
+			margin: 2rem;
 			font-size: 1rem;
 		}
 		button {
